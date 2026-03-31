@@ -1,0 +1,208 @@
+.tcas-page-wrapper {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  line-height: 1.6;
+}
+
+.tcas-container {
+  background-color: #ffffff; 
+  color: #333333;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+  max-width: 750px; 
+  width: 100%;
+}
+
+.tcas-header {
+  text-align: center;
+  border-bottom: 2px solid #eeeeee;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.tcas-header h1 {
+  color: #0088cc; 
+  margin: 0 0 10px 0;
+  font-size: 2em;
+}
+
+.tcas-header p {
+  color: #666666;
+  margin: 0;
+  font-size: 1.1em;
+}
+
+.note-box {
+  background-color: #fff9e6; 
+  padding: 15px 20px;
+  border-left: 5px solid #faa61a; 
+  border-radius: 6px;
+  margin-bottom: 30px;
+  font-size: 0.95em;
+  color: #555555;
+}
+
+.timeline-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.clickable-item {
+  background-color: #f8f9fa;
+  margin-bottom: 15px;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e0e0e0;
+  cursor: pointer; 
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; 
+}
+
+.clickable-item:hover {
+  transform: translateY(-3px);
+  border-color: #0088cc;
+  box-shadow: 0 4px 10px rgba(0, 136, 204, 0.15);
+}
+
+.phase-name {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #28a745; 
+}
+
+.phase-period {
+  background-color: #e9ecef;
+  padding: 5px 12px;
+  border-radius: 20px;
+  color: #495057; 
+  font-size: 0.9em;
+}
+
+/* =========================================
+   ส่วนจัดการ Popup (Modal)
+========================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; 
+}
+
+.modal-content {
+  background-color: #ffffff;
+  color: #333333;
+  padding: 30px 30px 20px 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px; /* ขยายความกว้างป๊อปอัพขึ้นเล็กน้อยเพื่อให้เนื้อหาไม่อึดอัด */
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease;
+  max-height: 90vh; /* ป้องกันไม่ให้ป๊อปอัพล้นจอ */
+  display: flex;
+  flex-direction: column;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #999999;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  z-index: 10;
+}
+
+.close-btn:hover {
+  color: #ff4d4f; 
+}
+
+.modal-content h2 {
+  color: #28a745;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.4em;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 15px;
+}
+
+/* ทำให้เนื้อหาด้านในเลื่อนได้ หากข้อมูลยาวเกินจอ */
+.modal-body-scroll {
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* ตกแต่ง Scrollbar ให้ดูสวยงาม (สำหรับเบราว์เซอร์ Webkit) */
+.modal-body-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-body-scroll::-webkit-scrollbar-thumb {
+  background-color: #cccccc;
+  border-radius: 4px;
+}
+
+/* การจัดระเบียบ 4 เซกชัน */
+.modal-section {
+  margin-bottom: 20px;
+}
+
+.modal-section h3 {
+  font-size: 1.05em;
+  color: #0088cc;
+  margin: 0 0 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-section p {
+  margin: 0;
+  font-size: 0.95em;
+  color: #555555;
+  line-height: 1.6;
+  padding-left: 30px; /* ย่อหน้าเนื้อหาเข้ามานิดนึงให้ดูแยกกับหัวข้อชัดเจน */
+}
+
+/* ไฮไลท์เซกชัน 'เหมาะกับใคร' เป็นพิเศษ */
+.target-audience {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #28a745;
+}
+.target-audience p {
+  padding-left: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 500px) {
+  .clickable-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+  }
+  .modal-section p {
+      padding-left: 0;
+  }
+}
