@@ -1,3 +1,5 @@
+/* UniversityCriteria.css - Full Version */
+
 .list-page-wrapper {
   background-color: #fcfdfe;
   min-height: 100vh;
@@ -28,6 +30,7 @@
   border-radius: 25px;
   border: 1px solid #e2e8f0;
   width: 250px;
+  outline: none;
 }
 
 /* Item แถวเรียงลงมา */
@@ -42,8 +45,8 @@
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.03);
   border: 1px solid #f1f5f9;
-  overflow: hidden;
   transition: 0.3s;
+  overflow: hidden;
 }
 
 .list-row-header {
@@ -58,16 +61,53 @@
   background-color: #f8faff;
 }
 
+/* จัดระเบียบส่วนซ้าย: โลโก้ + ข้อความ */
 .row-left {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 15px; /* ระยะห่างระหว่างกล่องโลโก้กับชื่อ */
+  flex: 1;
 }
 
+/* บังคับขนาดกล่องโลโก้ให้คงที่ ไม่เป็นแถบยาว */
+.uni-logo-wrapper {
+  width: 55px;
+  height: 55px;
+  position: relative;
+  flex-shrink: 0; /* สำคัญ: ห้ามโดนบีบ */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* กล่องตัวย่อ (โชว์แทนจุด) */
+.logo-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #eef2ff;
+  color: #4f46e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 14px;
+  border: 1px solid #e0e7ff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* รูปภาพโลโก้จริง */
 .list-logo {
-  width: 60px;
-  height: 60px;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+  position: relative;
+  z-index: 2;
+  border-radius: 12px;
+  background-color: white;
 }
 
 .row-title h3 {
@@ -93,6 +133,18 @@
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   margin-bottom: 20px;
+}
+
+/* ปรับให้แสดงผลแถวเดียวบนมือถือ */
+@media (max-width: 600px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+  .list-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
 }
 
 .detail-box strong {

@@ -1,9 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  base: '/Dekkaii-Web/',
+  plugins: [react()],
+  base: '/Dekkaii-Web/', // สำคัญมาก: ตัวเล็กตัวใหญ่ต้องตรงกับชื่อ Repo บน GitHub
 })

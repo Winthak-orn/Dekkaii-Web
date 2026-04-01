@@ -4,7 +4,6 @@ import './tcas.css';
 const TCAS = () => {
   const [selectedRound, setSelectedRound] = useState(null);
 
-  // ปรับโครงสร้างข้อมูล details ให้เก็บข้อมูลแยกเป็น 4 หัวข้อ
   const tcasRounds = [
     {
       id: 1,
@@ -93,37 +92,30 @@ const TCAS = () => {
             <h2>{selectedRound.name}</h2>
             
             <div className="modal-body-scroll">
-              {/* เซกชัน 1: กำหนดการ */}
               <div className="modal-section">
-                <h3>🗓️  กำหนดการ</h3>
+                <h3>🗓️ กำหนดการ</h3>
                 <p>{selectedRound.details.schedule}</p>
               </div>
 
-              {/* เซกชัน 2: เกณฑ์คร่าวๆ */}
               <div className="modal-section">
-                <h3>📊  เกณฑ์คร่าวๆ</h3>
+                <h3>📊 เกณฑ์คร่าวๆ</h3>
                 <p>{selectedRound.details.criteria}</p>
               </div>
 
-              {/* เซกชัน 3: หมายเหตุการรับสมัคร */}
               <div className="modal-section">
-                <h3>📝  หมายเหตุการรับสมัคร</h3>
+                <h3>📝 หมายเหตุการรับสมัคร</h3>
                 <p>{selectedRound.details.notes}</p>
               </div>
 
-              {/* เซกชัน 4: เหมาะกับใคร */}
               <div className="modal-section target-audience">
-                <h3>🎯  เหมาะกับใคร?</h3>
+                <h3>🎯 เหมาะกับใคร?</h3>
                 <p>{selectedRound.details.target}</p>
               </div>
             </div>
-
           </div>
         </div>
       )}
-
-    </div>
+    </div> 
   );
 };
-
 export default TCAS;

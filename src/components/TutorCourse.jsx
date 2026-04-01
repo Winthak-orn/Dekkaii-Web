@@ -76,7 +76,6 @@ const TutorCourse = () => {
             </div>
           ))}
         </div>
-
       </div>
     </div>
   );

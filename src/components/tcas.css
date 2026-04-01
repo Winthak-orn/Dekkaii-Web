@@ -1,119 +1,111 @@
+/* การจัดวางหน้าเว็บหลัก (ดัน Footer ลงล่าง) */
 .tcas-page-wrapper {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 40px 20px;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  line-height: 1.6;
+  flex-direction: column;
+  min-height: 70vh;
+  background-color: #f8fafc;
+  font-family: sans-serif;
 }
 
 .tcas-container {
-  background-color: #ffffff; 
-  color: #333333;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
-  max-width: 750px; 
+  flex: 1;
+  max-width: 900px;
   width: 100%;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
+/* ส่วนหัวและกล่องข้อความ */
 .tcas-header {
   text-align: center;
-  border-bottom: 2px solid #eeeeee;
-  padding-bottom: 20px;
   margin-bottom: 30px;
 }
 
 .tcas-header h1 {
-  color: #0088cc; 
-  margin: 0 0 10px 0;
-  font-size: 2em;
-}
-
-.tcas-header p {
-  color: #666666;
-  margin: 0;
-  font-size: 1.1em;
+  font-size: 2rem;
+  color: #1e293b;
+  margin-bottom: 10px;
 }
 
 .note-box {
-  background-color: #fff9e6; 
+  background-color: #fff9c4;
   padding: 15px 20px;
-  border-left: 5px solid #faa61a; 
-  border-radius: 6px;
+  border-radius: 8px;
   margin-bottom: 30px;
-  font-size: 0.95em;
-  color: #555555;
+  color: #5d4037;
+  border-left: 5px solid #fbc02d;
 }
 
+/* แถบข้อมูลออริจินัล (List) */
 .timeline-list {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .clickable-item {
-  background-color: #f8f9fa;
-  margin-bottom: 15px;
-  padding: 20px;
-  border-radius: 8px;
+  background-color: white;
+  padding: 20px 25px;
+  border-radius: 10px;
+  border: 2px solid #e2e8f0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #e0e0e0;
-  cursor: pointer; 
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; 
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .clickable-item:hover {
-  transform: translateY(-3px);
-  border-color: #0088cc;
-  box-shadow: 0 4px 10px rgba(0, 136, 204, 0.15);
+  border-color: #1a237e;
+  background-color: #f8faff;
+  transform: translateX(5px);
 }
 
 .phase-name {
+  font-size: 1.1rem;
   font-weight: bold;
-  font-size: 1.1em;
-  color: #28a745; 
+  color: #1e293b;
 }
 
 .phase-period {
-  background-color: #e9ecef;
+  background-color: #f1f5f9;
   padding: 5px 12px;
   border-radius: 20px;
-  color: #495057; 
-  font-size: 0.9em;
+  color: #64748b;
+  font-size: 0.9rem;
 }
 
-/* =========================================
-   ส่วนจัดการ Popup (Modal)
-========================================= */
+/* -------------------------------------- */
+/* Pop-up (Modal) ที่มีพื้นหลังและกรอบ */
+/* -------------------------------------- */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75); /* พื้นหลังสีดำโปร่งแสง */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; 
+  z-index: 1000;
+  backdrop-filter: blur(4px); /* เบลอหน้าเว็บด้านหลัง */
 }
 
 .modal-content {
-  background-color: #ffffff;
-  color: #333333;
-  padding: 30px 30px 20px 30px;
-  border-radius: 12px;
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 16px;
+  max-width: 600px;
   width: 90%;
-  max-width: 600px; /* ขยายความกว้างป๊อปอัพขึ้นเล็กน้อยเพื่อให้เนื้อหาไม่อึดอัด */
+  max-height: 80vh;
+  overflow-y: auto;
   position: relative;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.3s ease;
-  max-height: 90vh; /* ป้องกันไม่ให้ป๊อปอัพล้นจอ */
-  display: flex;
-  flex-direction: column;
+  border: 4px solid #1a237e; /* กรอบ Pop-up หนาๆ */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .close-btn {
@@ -122,87 +114,72 @@
   right: 20px;
   background: none;
   border: none;
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #999999;
+  font-size: 28px;
   cursor: pointer;
-  transition: color 0.2s ease;
-  z-index: 10;
+  color: #64748b;
 }
 
 .close-btn:hover {
-  color: #ff4d4f; 
+  color: #ef4444;
 }
 
 .modal-content h2 {
-  color: #28a745;
+  color: #1a237e;
   margin-top: 0;
-  margin-bottom: 20px;
-  font-size: 1.4em;
-  border-bottom: 2px solid #f0f0f0;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #f1f5f9;
   padding-bottom: 15px;
 }
 
-/* ทำให้เนื้อหาด้านในเลื่อนได้ หากข้อมูลยาวเกินจอ */
-.modal-body-scroll {
-  overflow-y: auto;
-  padding-right: 10px;
-}
-
-/* ตกแต่ง Scrollbar ให้ดูสวยงาม (สำหรับเบราว์เซอร์ Webkit) */
-.modal-body-scroll::-webkit-scrollbar {
-  width: 6px;
-}
-.modal-body-scroll::-webkit-scrollbar-thumb {
-  background-color: #cccccc;
-  border-radius: 4px;
-}
-
-/* การจัดระเบียบ 4 เซกชัน */
 .modal-section {
   margin-bottom: 20px;
 }
 
 .modal-section h3 {
-  font-size: 1.05em;
-  color: #0088cc;
-  margin: 0 0 8px 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  font-size: 1rem;
+  color: #334155;
+  margin-bottom: 8px;
 }
 
 .modal-section p {
-  margin: 0;
-  font-size: 0.95em;
-  color: #555555;
+  color: #475569;
   line-height: 1.6;
-  padding-left: 30px; /* ย่อหน้าเนื้อหาเข้ามานิดนึงให้ดูแยกกับหัวข้อชัดเจน */
+  margin: 0;
 }
 
-/* ไฮไลท์เซกชัน 'เหมาะกับใคร' เป็นพิเศษ */
-.target-audience {
-  background-color: #f8f9fa;
+/* -------------------------------------- */
+/* Footer ให้อยู่ด้านล่างสุด */
+/* -------------------------------------- */
+.list-footer {
+  width: 100%;
+  background-color: #f8fafc;
+  padding: 40px 20px;
+  border-top: 1px solid #e2e8f0;
+  text-align: center;
+  margin-top: auto;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.disclaimer {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+.contact-policy {
+  background-color: white;
   padding: 15px;
-  border-radius: 8px;
-  border-left: 4px solid #28a745;
-}
-.target-audience p {
-  padding-left: 0;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  display: inline-block;
+  margin-bottom: 20px;
 }
 
-@media (max-width: 500px) {
-  .clickable-item {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 12px;
-  }
-  .modal-section p {
-      padding-left: 0;
-  }
+.copyright {
+  font-size: 12px;
+  color: #94a3b8;
 }

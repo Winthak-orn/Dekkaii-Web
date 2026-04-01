@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TcasInfo from './components/TcasInfo';
 import Scholarship from "./components/Scholarship";
 import TutorCourse from './components/TutorCourse';
-// ✅ ต้องตรงกับชื่อไฟล์และโฟลเดอร์ที่คุณตั้งไว้
+import { Menu, X } from 'lucide-react';
 import UniversityCriteria from './components/UniversityCriteria';
 
 import { 
@@ -237,7 +237,7 @@ const HomeView = ({ onNavigate }) => (
 
   <div className="animate-in fade-in duration-500">
 
-    <section className="bg-[#1A237E] pt-16 pb-28 px-4 relative overflow-hidden text-center rounded-b-[40px] md:rounded-b-[80px]">
+    <section className="bg-[#1A237E] pt-16 pb-28 px-4 relative overflow- text-center rounded-b-[40px] md:rounded-b-[80px]">
 
       <div className="max-w-7xl mx-auto relative z-10">
 
@@ -249,7 +249,7 @@ const HomeView = ({ onNavigate }) => (
 
         <h1 className="text-4xl md:text-7xl font-black text-white mb-6 leading-[1.1]">
 
-          สร้าง <span className="text-[#FF6B00]">Future Portfolio</span> <br className="hidden md:block"/>
+          สร้าง <span className="text-[#FF6B00]">Future Portfolio</span> <br className=" md:block"/>
 
           ผ่าน <span className="underline decoration-[#FF6B00] decoration-8 underline-offset-8">กิจกรรม</span> ที่ใช่
 
@@ -366,9 +366,9 @@ const HomeView = ({ onNavigate }) => (
 
 const ActivityCard = ({ camp, onClick }) => (
 
-  <div onClick={onClick} className="group bg-white rounded-3xl border border-gray-100 overflow-hidden hover:shadow-2xl hover:shadow-indigo-100 transition-all cursor-pointer flex flex-col h-full">
+  <div onClick={onClick} className="group bg-white rounded-3xl border border-gray-100  hover:shadow-2xl hover:shadow-indigo-100 transition-all cursor-pointer flex flex-col h-full">
 
-    <div className="relative h-44 overflow-hidden">
+    <div className="relative h-44 overflow-">
 
       <img src={camp.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
 
@@ -446,8 +446,6 @@ const ActivityCard = ({ camp, onClick }) => (
 
 );
 
-
-
 // --- Main App Controller ---
 
 export default function App() {
@@ -516,46 +514,58 @@ export default function App() {
 
   });
 
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
+    
+    
 
     <div className="min-h-screen bg-[#FAFBFF] font-['Prompt',sans-serif]">
 
-      <nav className="bg-white/80 backdrop-blur-md border-b border-gray-100 h-25 flex items-center sticky top-0 z-50 px-4 md:px-8">
+      {/* เติม relative เข้าไปที่ nav เพื่อให้เมนูมือถืออ้างอิงตำแหน่งได้ถูกต้อง */}
+      <nav className="bg-white/80 backdrop-blur-md border-b border-gray-100 h-25 flex items-center sticky top-0 z-50 px-4 md:px-8 relative">
 
         <div className="max-w-7xl mx-auto w-full flex justify-between items-center">
 
+          {/* ส่วนโลโก้ (เหมือนเดิม) */}
           <div onClick={() => navigate('home')} className="flex items-center gap-2 cursor-pointer group">
-
             <div className="bg-[#FF6B00] p-1.5 rounded-xl group-hover:rotate-12 transition-transform shadow-lg shadow-orange-100">
-
               <BookOpen className="text-white" size={20} />
-
             </div>
-
             <span className="text-xl font-black text-[#1A237E] italic tracking-tight">DeKKaii</span>
-
           </div>
 
+          {/* ส่วนเมนูคอมพิวเตอร์ (เพิ่ม hidden md:flex เพื่อให้ซ่อนตอนจอเล็ก) */}
           <div className="hidden md:flex items-center gap-10">
-
             <button onClick={() => navigate('home')} className={`text-sm font-bold ${view === 'home' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>หน้าแรก</button>
-
             <button onClick={() => navigate('explore')} className={`text-sm font-bold ${view === 'explore' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>ค้นหาค่าย</button>
-
             <button onClick={() => navigate('tcas')} className="text-gray-600 hover:text-[#ff6600] font-medium">TCAS</button>
-
             <button onClick={() => navigate('scholarship')} className="text-gray-600 hover:text-[#ff6600] font-medium">SCHOLARSHIP</button>
-
             <button onClick={() => navigate('tutor')} className="text-gray-600 hover:text-[#ff6600] font-medium">TUTOR COURSE</button>
-
             <button onClick={() => navigate('criteria')} className="text-gray-600 hover:text-[#ff6600] font-medium">กำหนดเกณฑ์มหาวทยาลัยต่างๆ</button>
+          </div>
 
+          {/* ปุ่ม 3 ขีดสำหรับมือถือ (จะโชว์เฉพาะจอเล็ก md:hidden) */}
+          <div className="md:hidden flex items-center">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-[#1A237E] focus:outline-none p-2">
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
           </div>
 
         </div>
 
+        {/* ส่วนเมนู Dropdown สำหรับมือถือ (จะโผล่มาเมื่อ isMenuOpen เป็น true) */}
+        {isMenuOpen && (
+          <div className="absolute top-full left-0 w-full bg-white shadow-lg border-b border-gray-100 flex flex-col p-4 gap-4 md:hidden z-50">
+            {/* สังเกตว่าผมเพิ่ม setIsMenuOpen(false) เข้าไป เพื่อให้พอกดเมนูแล้ว แถบมันจะปิดพับเก็บไปเองครับ */}
+            <button onClick={() => { navigate('home'); setIsMenuOpen(false); }} className={`text-left text-sm font-bold ${view === 'home' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>หน้าแรก</button>
+            <button onClick={() => { navigate('explore'); setIsMenuOpen(false); }} className={`text-left text-sm font-bold ${view === 'explore' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>ค้นหาค่าย</button>
+            <button onClick={() => { navigate('tcas'); setIsMenuOpen(false); }} className="text-left text-gray-600 hover:text-[#ff6600] font-medium">TCAS</button>
+            <button onClick={() => { navigate('scholarship'); setIsMenuOpen(false); }} className="text-left text-gray-600 hover:text-[#ff6600] font-medium">SCHOLARSHIP</button>
+            <button onClick={() => { navigate('tutor'); setIsMenuOpen(false); }} className="text-left text-gray-600 hover:text-[#ff6600] font-medium">TUTOR COURSE</button>
+            <button onClick={() => { navigate('criteria'); setIsMenuOpen(false); }} className="text-left text-gray-600 hover:text-[#ff6600] font-medium">กำหนดเกณฑ์มหาวทยาลัยต่างๆ</button>
+          </div>
+        )}
       </nav>
 
 
@@ -850,7 +860,7 @@ export default function App() {
 
             </button>
 
-            <div className="bg-white rounded-[40px] overflow-hidden shadow-2xl border border-gray-50">
+            <div className="bg-white rounded-[40px]  shadow-2xl border border-gray-50">
 
                <div className="h-[400px] relative">
 
@@ -966,38 +976,6 @@ export default function App() {
 
       </main>
 
-
-
-      <footer className="py-20 border-t border-gray-100 bg-white">
-
-        <div className="max-w-7xl mx-auto px-4 text-center">
-
-          <div className="flex justify-center gap-2 mb-6">
-
-            <div className="bg-[#FF6B00] p-1.5 rounded-lg"><BookOpen className="text-white" size={20} /></div>
-
-            <span className="text-xl font-black text-[#1A237E] italic tracking-tight">DeKKaii</span>
-
-          </div>
-
-          <p className="text-gray-400 text-[10px] font-bold tracking-[0.3em] mb-4 uppercase">Connecting Students to Universities</p>
-
-          <div className="flex justify-center gap-8 text-[10px] font-bold text-gray-300 uppercase tracking-widest">
-
-             <a href="#" className="hover:text-[#FF6B00] transition-colors">About Us</a>
-
-             <a href="#" className="hover:text-[#FF6B00] transition-colors">Privacy Policy</a>
-
-             <a href="#" className="hover:text-[#FF6B00] transition-colors">Contact</a>
-
-          </div>
-
-        </div>
-
-      </footer>
-
-
-
       <style dangerouslySetInnerHTML={{ __html: `
 
         @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800;900&display=swap');
@@ -1019,7 +997,6 @@ export default function App() {
         .slide-in-from-bottom-8 { animation: slide-in-bottom 0.6s ease-out; }
 
       `}} />
-
     </div>
 
   );
