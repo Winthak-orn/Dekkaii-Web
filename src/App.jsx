@@ -4,6 +4,7 @@ import Scholarship from "./components/Scholarship";
 import TutorCourse from './components/TutorCourse';
 import { Menu, X } from 'lucide-react';
 import UniversityCriteria from './components/UniversityCriteria';
+import Footer from './Footer';
 
 import { 
 
@@ -975,6 +976,8 @@ export default function App() {
         )}
 
       </main>
+
+      <Footer />
 
       <style dangerouslySetInnerHTML={{ __html: `
 
