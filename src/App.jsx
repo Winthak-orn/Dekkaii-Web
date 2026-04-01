@@ -518,8 +518,6 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    
-    
 
     <div className="min-h-screen bg-[#FAFBFF] font-['Prompt',sans-serif]">
 
@@ -529,10 +527,10 @@ export default function App() {
         <div className="max-w-7xl mx-auto w-full flex justify-between items-center">
 
           {/* ส่วนโลโก้ (เหมือนเดิม) */}
-          <div onClick={() => navigate('home')} className="flex items-center gap-2 cursor-pointer group">
-            <div className="bg-[#FF6B00] p-1.5 rounded-xl group-hover:rotate-12 transition-transform shadow-lg shadow-orange-100">
-              <BookOpen className="text-white" size={20} />
-            </div>
+          <div onClick={() => navigate('home')} className="flex items-center cursor-pointer group">
+            <img src="UNVST-Logo/no.1/Show_me_u_got-Dekkaii.png" alt="DeKKaii Logo" 
+                 className="h-20 w-auto object-contain hover:scale-105 transition-transform duration-300"
+            />
             <span className="text-xl font-black text-[#1A237E] italic tracking-tight">DeKKaii</span>
           </div>
 
