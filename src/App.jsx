@@ -528,8 +528,8 @@ export default function App() {
 
           {/* ส่วนโลโก้ (เหมือนเดิม) */}
           <div onClick={() => navigate('home')} className="flex items-center cursor-pointer group">
-            <img src="UNVST-Logo/no.1/Show_me_u_got-Dekkaii.png" alt="DeKKaii Logo" 
-                 className="h-20 w-auto object-contain hover:scale-105 transition-transform duration-300"
+            <img src="UNVST-Logo/no.1/logo.png" alt="DeKKaii Logo" 
+                 className="h-14 w-auto object-contain rounded-xl hover:scale-105 transition-transform duration-300 shadow-sm"
             />
             <span className="text-xl font-black text-[#1A237E] italic tracking-tight">DeKKaii</span>
           </div>
