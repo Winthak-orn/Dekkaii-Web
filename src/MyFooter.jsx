@@ -27,7 +27,7 @@ const Footer = () => {
             <strong>นโยบายการนำข้อมูลออก (Take-down Policy):</strong> หากหน่วยงานใดประสงค์ให้แก้ไขหรือนำข้อมูลออกจากระบบ โปรดติดต่อที่{' '}
             {/* อย่าลืมเปลี่ยนอีเมลตรงนี้นะครับ 👇 */}
             <a href="mailto:your-email@example.com" style={styles.emailLink}>
-              [Email ของคุณ]
+              [52524@brr.ac.th]
             </a>{' '}
             ทางเราจะดำเนินการทันที
           </p>
