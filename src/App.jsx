@@ -4,7 +4,7 @@ import Scholarship from "./components/Scholarship";
 import TutorCourse from './components/TutorCourse';
 import { Menu, X } from 'lucide-react';
 import UniversityCriteria from './components/UniversityCriteria';
-import Footer from './Footer';
+import Footer from './MyFooter';
 
 import { 
 
