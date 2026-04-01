@@ -527,11 +527,11 @@ export default function App() {
         <div className="max-w-7xl mx-auto w-full flex justify-between items-center">
 
           {/* ส่วนโลโก้ (เหมือนเดิม) */}
-          <div onClick={() => navigate('home')} className="flex items-center cursor-pointer group">
+          <div onClick={() => navigate('home')} className="flex items-center cursor-pointer  object-contain rounded-xl hover:scale-105 transition-transform">
             <img src="UNVST-Logo/no.1/logo.png" alt="DeKKaii Logo" 
-                 className="h-14 w-auto object-contain rounded-xl hover:scale-105 transition-transform duration-300 shadow-sm"
+                 className="h-20 w-36"
             />
-            <span className="text-xl font-black text-[#1A237E] italic tracking-tight">DeKKaii</span>
+            <span className="text-xl font-black text-[#1A237E] tracking-tight">DEKKAII</span>
           </div>
 
           {/* ส่วนเมนูคอมพิวเตอร์ (เพิ่ม hidden md:flex เพื่อให้ซ่อนตอนจอเล็ก) */}
