@@ -40,8 +40,8 @@ export default function Navbar({ view, navigate }) {
       {/* เมนู Dropdown สำหรับมือถือ */}
       {isMenuOpen && (
         <div className="absolute top-full left-0 w-full bg-white shadow-lg border-b border-gray-100 flex flex-col p-4 gap-4 md:hidden z-50">
-          <button onClick={() => { navigate('home'); setIsMenuOpen(false); }} className={`text-left text-sm font-bold ${view === 'home' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>หน้าแรก</button>
-          <button onClick={() => { navigate('explore'); setIsMenuOpen(false); }} className={`text-left text-sm font-bold ${view === 'explore' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>ค้นหาค่าย</button>
+          <button onClick={() => navigate('home')} className={`text-sm font-bold ${view === 'home' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>หน้าแรก</button>
+          <button onClick={() => navigate('explore')} className={`text-sm font-bold ${view === 'explore' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>ค้นหาค่าย</button>
           <button onClick={() => navigate('tcas')} className={`text-sm font-bold ${view === 'tcas' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>TCAS</button>
           <button onClick={() => navigate('scholarship')} className={`text-sm font-bold ${view === 'scholarship' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>SCHOLARSHIP</button>
           <button onClick={() => navigate('tutor')} className={`text-sm font-bold ${view === 'tutor' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>TUTOR COURSE</button>
