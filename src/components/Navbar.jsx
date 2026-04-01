@@ -42,10 +42,11 @@ export default function Navbar({ view, navigate }) {
         <div className="absolute top-full left-0 w-full bg-white shadow-lg border-b border-gray-100 flex flex-col p-4 gap-4 md:hidden z-50">
           <button onClick={() => { navigate('home'); setIsMenuOpen(false); }} className={`text-left text-sm font-bold ${view === 'home' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>หน้าแรก</button>
           <button onClick={() => { navigate('explore'); setIsMenuOpen(false); }} className={`text-left text-sm font-bold ${view === 'explore' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>ค้นหาค่าย</button>
-          <button onClick={() => { navigate('tcas'); setIsMenuOpen(false); }} className="text-left text-gray-600 hover:text-[#ff6600] font-medium">TCAS</button>
-          <button onClick={() => { navigate('scholarship'); setIsMenuOpen(false); }} className="text-left text-gray-600 hover:text-[#ff6600] font-medium">SCHOLARSHIP</button>
-          <button onClick={() => { navigate('tutor'); setIsMenuOpen(false); }} className="text-left text-gray-600 hover:text-[#ff6600] font-medium">TUTOR COURSE</button>
-          <button onClick={() => { navigate('criteria'); setIsMenuOpen(false); }} className="text-left text-gray-600 hover:text-[#ff6600] font-medium">กำหนดเกณฑ์มหาวิทยาลัย</button>
+          <button onClick={() => navigate('tcas')} className={`text-sm font-bold ${view === 'tcas' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>TCAS</button>
+          <button onClick={() => navigate('scholarship')} className={`text-sm font-bold ${view === 'scholarship' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>SCHOLARSHIP</button>
+          <button onClick={() => navigate('tutor')} className={`text-sm font-bold ${view === 'tutor' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>TUTOR COURSE</button>
+          <button onClick={() => navigate('criteria')} className={`text-sm font-bold ${view === 'criteria' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>กำหนดเกณฑ์มหาวิทยาลัย</button>
+          <button onClick={() => navigate('portfolio')} className={`text-sm font-bold ${view === 'portfolio' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>PORTFOLIO</button>
         </div>
       )}
     </nav>
