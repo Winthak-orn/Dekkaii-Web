@@ -7,6 +7,7 @@ import Scholarship from "./components/Scholarship";
 import TutorCourse from './components/TutorCourse';
 import UniversityCriteria from './components/UniversityCriteria';
 import Footer from './MyFooter'; // หรือ './components/Footer' ขึ้นอยู่กับว่าคุณเก็บไว้ไหน
+import Portfolio from './components/Portfolio';
 import { 
   Calendar, MapPin, Clock, ChevronRight, Zap, 
   ArrowLeft, School
@@ -157,6 +158,7 @@ export default function App() {
         {view === 'scholarship' && <Scholarship />}
         {view === 'tutor' && <TutorCourse />}
         {view === 'criteria' && <UniversityCriteria />}
+        {view === 'portfolio' && <Portfolio />}
 
         {/* หน้าดูรายละเอียดค่าย (Detail View) */}
         {view === 'detail' && selectedCamp && (

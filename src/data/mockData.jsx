@@ -95,3 +95,50 @@ export const CAMPS_DATA = [
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" 
   }
 ];
+
+export const PORTFOLIOS_DATA = [
+  {
+    id: 1,
+    studentName: "พี่นนท์",
+    school: "รร.สวนกุหลาบวิทยาลัย",
+    targetUniversity: "จุฬาลงกรณ์มหาวิทยาลัย",
+    faculty: "วิศวกรรมศาสตร์",
+    major: "วิศวกรรมคอมพิวเตอร์",
+    coverImage: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800",
+    tags: ["สอวน. คอมพิวเตอร์", "โครงงาน AI", "เกรด 3.95"],
+    driveUrl: "https://drive.google.com/drive/folders/xxxxxx1"
+  },
+  {
+    id: 2,
+    studentName: "พี่มายด์",
+    school: "รร.เตรียมอุดมศึกษา",
+    targetUniversity: "มหาวิทยาลัยมหิดล",
+    faculty: "แพทยศาสตร์ศิริราชพยาบาล",
+    major: "แพทยศาสตร์",
+    coverImage: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800",
+    tags: ["ค่ายสวมกาวน์", "จิตอาสา รพ.", "โครงงานชีววิทยา"],
+    driveUrl: "https://drive.google.com/drive/folders/xxxxxx2"
+  },
+  {
+    id: 3,
+    studentName: "พี่เจเจ",
+    school: "รร.สามเสนวิทยาลัย",
+    targetUniversity: "มหาวิทยาลัยธรรมศาสตร์",
+    faculty: "พาณิชยศาสตร์และการบัญชี",
+    major: "บริหารธุรกิจ",
+    coverImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    tags: ["แข่งแผนธุรกิจ", "ประธานชมรม", "TU-STAR"],
+    driveUrl: "https://drive.google.com/drive/folders/xxxxxx3"
+  },
+  {
+    id: 4,
+    studentName: "พี่ฟ้า",
+    school: "รร.สตรีวิทยา",
+    targetUniversity: "มหาวิทยาลัยศิลปากร",
+    faculty: "มัณฑนศิลป์",
+    major: "ออกแบบนิเทศศิลป์",
+    coverImage: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800",
+    tags: ["ชนะเลิศประกวดวาดภาพ", "รับทำกราฟิก", "สายอาร์ต"],
+    driveUrl: "https://drive.google.com/drive/folders/xxxxxx4"
+  }
+];

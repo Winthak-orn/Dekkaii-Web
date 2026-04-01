@@ -26,6 +26,7 @@ export default function Navbar({ view, navigate }) {
           <button onClick={() => navigate('scholarship')} className={`text-sm font-bold ${view === 'scholarship' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>SCHOLARSHIP</button>
           <button onClick={() => navigate('tutor')} className={`text-sm font-bold ${view === 'tutor' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>TUTOR COURSE</button>
           <button onClick={() => navigate('criteria')} className={`text-sm font-bold ${view === 'criteria' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>กำหนดเกณฑ์มหาวิทยาลัย</button>
+          <button onClick={() => navigate('portfolio')} className={`text-sm font-bold ${view === 'portfolio' ? 'text-[#FF6B00]' : 'text-gray-500 hover:text-[#FF6B00]'}`}>PORTFOLIO</button>
         </div>
 
         {/* ปุ่ม 3 ขีดสำหรับมือถือ */}
