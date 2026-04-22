@@ -70,7 +70,7 @@ export const Workshop_Data = [
     category: "health", 
     subCategory: "เภสัชศาสตร์", 
     price: "1600.-",
-    image: "/assets/onceThailand/Cosmetic Sci Lab Fragrance And Lip.jpg",
+    image: "assets/onceThailand/Cosmetic Sci Lab Fragrance And Lip.jpg",
     Registerlink: "https://forms.gle/kgMj7qkoswUCSjfw5",
     Contactlink: "http://line.me/ti/p/~@edq9735t",
     GoogleMapLink: "https://goo.gl/maps/SAj6V94EDrYpQMgV6",
