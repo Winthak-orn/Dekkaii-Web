@@ -163,7 +163,6 @@ export default function App() {
                  <img src={selectedCamp.image} className=" object-cover" alt={selectedCamp.title} />
                 </div>
                 <div className="flex flex-wrap gap-2 mb-4">
-                      <Badge variant="purple">{ACTIVITY_TYPES.find(t => t.id === selectedCamp.type)?.name}</Badge>
                       <Badge variant="indigo">{CATEGORIES.find(c => c.id === selectedCamp.category)?.name}</Badge>
                       <Badge variant="blue">{selectedCamp.subCategory}</Badge>
                 </div>
