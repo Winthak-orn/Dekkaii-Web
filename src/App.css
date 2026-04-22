@@ -1,1 +1,115 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ============================
+   Global Styles
+============================ */
+body {
+  @apply font-['Prompt'] bg-[#FAFBFF] min-h-screen text-gray-800;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #f1f1f1; border-radius: 10px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #FF6B00; }
+
+/* Animations */
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slide-in-bottom { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.animate-in { animation: fade-in 0.5s ease-out; }
+.slide-in-from-bottom-8 { animation: slide-in-bottom 0.6s ease-out; }
+
+/* ============================
+   Components & UI
+============================ */
+
+/* Badge */
+.badge-base { @apply text-[10px] font-bold px-2 py-0.5 rounded-full; }
+.badge-primary { @apply bg-orange-100 text-[#FF6B00]; }
+.badge-success { @apply bg-green-100 text-green-600; }
+.badge-indigo { @apply bg-indigo-50 text-[#1A237E]; }
+.badge-gray { @apply bg-gray-100 text-gray-500; }
+.badge-blue { @apply bg-blue-50 text-blue-600; }
+.badge-purple { @apply bg-purple-50 text-purple-600; }
+
+/* Buttons */
+.btn-primary {
+  @apply bg-[#FF6B00] text-white px-8 py-4 rounded-2xl font-black text-lg shadow-xl shadow-orange-900/20 hover:scale-105 transition-all;
+}
+.btn-register {
+  @apply w-full bg-[#1A237E] text-white py-5 rounded-2xl font-black text-xl hover:bg-[#FF6B00] transition-all shadow-xl shadow-indigo-100;
+}
+.btn-back {
+  @apply mb-8 flex items-center gap-2 font-bold text-gray-400 hover:text-black transition-colors;
+}
+
+/* Activity Card */
+.activity-card {
+  @apply bg-white rounded-3xl border border-gray-100 hover:shadow-2xl hover:shadow-indigo-100 transition-all cursor-pointer flex flex-col h-full overflow-hidden;
+}
+.activity-card-img-wrapper {
+  @apply relative;
+}
+.activity-card-img {
+  @apply w-full h-full object-cover  transition-transform duration-700;
+}
+.group:hover .activity-card-img {
+  @apply scale-110;
+}
+.activity-card-body {
+  @apply p-5 flex flex-col flex-1;
+}
+.activity-card-title {
+  @apply font-bold text-gray-800 mt-2 mb-4 line-clamp-2 transition-colors leading-snug;
+}
+.group:hover .activity-card-title {
+  @apply text-[#FF6B00];
+}
+.price-tag {
+  @apply bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[11px] font-black text-[#1A237E];
+}
+.date-box {
+  @apply bg-orange-50/50 p-2 rounded-xl border border-orange-100/50;
+}
+
+/* Home View Layouts */
+.hero-section {
+  @apply bg-[#1A237E] pt-16 pb-28 px-4 relative overflow-hidden text-center rounded-b-[40px] md:rounded-b-[80px];
+}
+.hero-badge {
+  @apply inline-flex items-center gap-2 bg-white/10 text-orange-400 px-4 py-1.5 rounded-full text-[10px] font-bold mb-6 backdrop-blur-md border border-white/10 tracking-widest uppercase;
+}
+.hero-title {
+  @apply text-4xl md:text-7xl font-black text-white mb-6 leading-[1.1];
+}
+.category-grid {
+  @apply bg-white p-6 rounded-[40px] shadow-2xl shadow-indigo-100 grid grid-cols-2 md:grid-cols-4 gap-4;
+}
+.category-btn {
+  /* ลบคำว่า group ออกจากตรงนี้ */
+  @apply flex items-center gap-3 p-4 rounded-3xl transition-all border border-transparent;
+}
+/* แยกส่วน Hover มาเขียนแบบนี้แทน เพื่อความปลอดภัยและอ่านง่าย */
+.category-btn:hover {
+  @apply bg-orange-50 border-orange-100;
+}
+.category-icon-box {
+  @apply w-10 h-10 bg-indigo-50 rounded-xl flex items-center justify-center text-[#1A237E] transition-all;
+}
+.group:hover .category-icon-box {
+  @apply bg-[#FF6B00] text-white;
+}
+.region-bar {
+  @apply bg-white/60 backdrop-blur-sm p-4 rounded-[30px] flex flex-wrap justify-center gap-2 md:gap-8;
+}
+
+/* Detail View Layouts */
+.detail-card {
+  @apply bg-white rounded-[40px] shadow-2xl border border-gray-50 overflow-hidden;
+}
+.info-box-blue {
+  @apply bg-blue-50/50 p-6 rounded-[32px] border border-blue-100/50;
+}
+.info-box-orange {
+  @apply bg-orange-50/50 p-8 rounded-[32px] space-y-6 h-fit border border-orange-100/50;
+}

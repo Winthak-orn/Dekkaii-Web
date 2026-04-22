@@ -7,11 +7,11 @@ import {
 } from 'lucide-react';
 
 export const REGIONS = [
-  { id: 'central', name: 'ภาคกลาง (รวมกรุงเทพฯ)', universities: ['จุฬาลงกรณ์มหาวิทยาลัย', 'มหาวิทยาลัยมหิดล', 'มหาวิทยาลัยธรรมศาสตร์', 'มหาวิทยาลัยเกษตรศาสตร์'] },
-  { id: 'north', name: 'ภาคเหนือ', universities: ['มหาวิทยาลัยเชียงใหม่', 'มหาวิทยาลัยแม่ฟ้าหลวง', 'มหาวิทยาลัยนเรศวร'] },
-  { id: 'northeast', name: 'ภาคตะวันออกเฉียงเหนือ', universities: ['มหาวิทยาลัยขอนแก่น', 'มหาวิทยาลัยมหาสารคาม'] },
-  { id: 'east', name: 'ภาคตะวันออก', universities: ['มหาวิทยาลัยบูรพา'] },
-  { id: 'south', name: 'ภาคใต้', universities: ['มหาวิทยาลัยสงขลานครินทร์', 'มหาวิทยาลัยวลัยลักษณ์'] }
+  { id: 'central', name: 'ภาคกลาง (รวมกรุงเทพฯ)', universities:[] },
+  { id: 'north', name: 'ภาคเหนือ', universities: [] },
+  { id: 'northeast', name: 'ภาคตะวันออกเฉียงเหนือ', universities: [] },
+  { id: 'east', name: 'ภาคตะวันออก', universities: [] },
+  { id: 'south', name: 'ภาคใต้', universities: [] }
 ];
 
 export const ACTIVITY_TYPES = [
@@ -58,41 +58,22 @@ export const CATEGORIES = [
   }
 ];
 
-export const CAMPS_DATA = [
-  { 
-    id: 1, title: "Pre-Med Workshop: สวมกาวน์ตะลุยห้องแล็บ", type: 'workshop', 
-    regDate: "วันนี้ - 25 มี.ค. 69", date: "12–15 เม.ย. 2026", 
-    location: "ศิริราช", region: 'central', university: 'มหาวิทยาลัยมหิดล', 
-    category: "health", subCategory: "แพทยศาสตร์", price: "950.-",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800" 
-  },
-  { 
-    id: 2, title: "Psychology Insights: เจาะลึกวิถีจิตแพทย์", type: 'career-guidance', 
-    regDate: "วันนี้ - 5 เม.ย. 69", date: "18–20 เม.ย. 2026", 
-    location: "กรุงเทพฯ", region: 'central', university: 'จุฬาลงกรณ์มหาวิทยาลัย', 
-    category: "health", subCategory: "จิตเวชศาสตร์", price: "ฟรี",
-    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=800" 
-  },
-  { 
-    id: 3, title: "Dental Hero: ค่ายเจาะลึกวิชาชีพทันตแพทย์", type: 'summer-camp', 
-    regDate: "วันนี้ - 15 มี.ค. 69", date: "1–3 พ.ค. 2026", 
-    location: "เชียงใหม่", region: 'north', university: 'มหาวิทยาลัยเชียงใหม่', 
-    category: "health", subCategory: "ทันตแพทยศาสตร์", price: "1,200.-",
-    image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=800" 
-  },
-  { 
-    id: 4, title: "Smart Engineer: นวัตกรรมหุ่นยนต์กู้ภัย", type: 'competition', 
-    regDate: "10 มี.ค. - 20 พ.ค. 69", date: "5–10 มิ.ย. 2026", 
-    location: "ขอนแก่น", region: 'northeast', university: 'มหาวิทยาลัยขอนแก่น', 
-    category: "eng", subCategory: "หุ่นยนต์และ AI", price: "ฟรี",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800" 
-  },
-  { 
-    id: 5, title: "Portfolio 101: ทำพอร์ตให้ติดวิศวะ", type: 'tutor-portfolio', 
-    regDate: "วันนี้ - 30 มี.ค. 69", date: "15–18 มิ.ย. 2026", 
-    location: "ลาดกระบัง", region: 'central', university: 'พระจอมเกล้าฯ ลาดกระบัง', 
-    category: "eng", subCategory: "วิทยาการข้อมูล", price: "500.-",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" 
+export const Workshop_Data = [
+    { 
+    id: 1, title: "Cosmetic Sci Lab : Fragrance & Lip (ห้องเรียนจำลองวิทย์เครื่องสำอาง : กลิ่น และลิป)", 
+    type: 'camp',
+    regDate: "------", 
+    date: "วันที่ 24 พฤษภาคม 2569", 
+    location: "KX Knowledge Exchange", 
+    region: 'central', 
+    university: 'OnceThailand', 
+    category: "health", 
+    subCategory: "เภสัชศาสตร์", 
+    price: "1600.-",
+    image: "/assets/onceThailand/Cosmetic Sci Lab Fragrance And Lip.jpg",
+    Registerlink: "https://forms.gle/kgMj7qkoswUCSjfw5",
+    Contactlink: "http://line.me/ti/p/~@edq9735t",
+    GoogleMapLink: "https://goo.gl/maps/SAj6V94EDrYpQMgV6",
   }
 ];
 

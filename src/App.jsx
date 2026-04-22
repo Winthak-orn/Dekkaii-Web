@@ -1,54 +1,47 @@
 import React, { useState } from 'react';
 
+import './app.css'; // นำเข้าไฟล์ CSS
+
 import Navbar from './components/Navbar';
 import Explore from './components/Explore';
 import TcasInfo from './components/TcasInfo';
 import Scholarship from "./components/Scholarship";
 import TutorCourse from './components/TutorCourse';
 import UniversityCriteria from './components/UniversityCriteria';
-import Footer from './MyFooter'; // หรือ './components/Footer' ขึ้นอยู่กับว่าคุณเก็บไว้ไหน
+import Footer from './MyFooter'; 
 import Portfolio from './components/Portfolio';
 import { 
   Calendar, MapPin, Clock, ChevronRight, Zap, 
-  ArrowLeft, School
+  ArrowLeft, School , MessageCircle ,BriefcaseBusiness
 } from 'lucide-react';
 
-// 📌 ดึงข้อมูล Data Base จากไฟล์ mockData มาใช้งานตรงนี้!
-import { REGIONS, ACTIVITY_TYPES, CATEGORIES, CAMPS_DATA } from './data/mockData';
+import { REGIONS, ACTIVITY_TYPES, CATEGORIES, Workshop_Data } from './data/mockData';
 
 // --- Shared Components ---
 const Badge = ({ children, variant = 'primary' }) => {
-  const styles = {
-    primary: 'bg-orange-100 text-[#FF6B00]', success: 'bg-green-100 text-green-600',
-    indigo: 'bg-indigo-50 text-[#1A237E]', gray: 'bg-gray-100 text-gray-500',
-    blue: 'bg-blue-50 text-blue-600', purple: 'bg-purple-50 text-purple-600'
-  };
-  return <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${styles[variant]}`}>{children}</span>;
+  return <span className={`badge-base badge-${variant}`}>{children}</span>;
 };
 
 const ActivityCard = ({ camp, onClick }) => (
-  <div onClick={onClick} className="group bg-white rounded-3xl border border-gray-100 hover:shadow-2xl hover:shadow-indigo-100 transition-all cursor-pointer flex flex-col h-full overflow-hidden">
-    <div className="relative h-44">
-      <img src={camp.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={camp.title} />
-      <div className="absolute top-3 left-3 flex flex-col gap-1">
-         <Badge variant="purple">{ACTIVITY_TYPES.find(t => t.id === camp.type)?.name}</Badge>
-      </div>
-      <div className="absolute bottom-3 left-3 flex flex-col gap-1 items-start">
-         <Badge variant="indigo">{CATEGORIES.find(c => c.id === camp.category)?.name}</Badge>
-         <Badge variant="blue">{camp.subCategory}</Badge>
-      </div>
-      <div className="absolute bottom-3 right-3">
-         <div className="bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[11px] font-black text-[#1A237E]">{camp.price}</div>
-      </div>
+  <div onClick={onClick} className="activity-card group">
+    <div className="activity-card-img-wrapper ">
+      <img src={camp.image} className="activity-card-img" alt={camp.title} />
     </div>
-    <div className="p-5 flex flex-col flex-1">
+    <div className="activity-card-body">
+      <div className="flex justify-between items-start mb-4 gap-2">
+      <div className="flex flex-wrap gap-1">
+        <Badge variant="indigo">{CATEGORIES.find(c => c.id === camp.category)?.name}</Badge>
+        <Badge variant="blue">{camp.subCategory}</Badge>
+      </div>
+      <div className="price-tag shrink-0">{camp.price}</div>
+    </div>
       <div className="flex flex-wrap gap-1 mb-2">
         <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center text-[10px] font-bold text-[#FF6B00]">{camp.university.charAt(0)}</div>
         <span className="text-[10px] font-bold text-gray-400 mt-1">{camp.university}</span>
       </div>
-      <h3 className="font-bold text-gray-800 mt-2 mb-4 line-clamp-2 group-hover:text-[#FF6B00] transition-colors leading-snug">{camp.title}</h3>
+      <h3 className="activity-card-title">{camp.title}</h3>
       <div className="mt-auto space-y-3">
-        <div className="bg-orange-50/50 p-2 rounded-xl border border-orange-100/50">
+        <div className="date-box">
           <div className="flex items-center gap-2 text-[10px] font-bold text-[#FF6B00]">
             <Clock size={12}/> วันสมัคร: {camp.regDate}
           </div>
@@ -64,20 +57,20 @@ const ActivityCard = ({ camp, onClick }) => (
 
 const HomeView = ({ onNavigate }) => (
   <div className="animate-in fade-in duration-500">
-    <section className="bg-[#1A237E] pt-16 pb-28 px-4 relative overflow-hidden text-center rounded-b-[40px] md:rounded-b-[80px]">
+    <section className="hero-section">
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="inline-flex items-center gap-2 bg-white/10 text-orange-400 px-4 py-1.5 rounded-full text-[10px] font-bold mb-6 backdrop-blur-md border border-white/10 tracking-widest uppercase">
+        <div className="hero-badge">
           <Zap size={14} /> The Future of Education
         </div>
-        <h1 className="text-4xl md:text-7xl font-black text-white mb-6 leading-[1.1]">
-          สร้าง <span className="text-[#FF6B00]">Future Portfolio</span> <br className=" md:block"/>
+        <h1 className="hero-title">
+          สร้าง <span className="text-[#FF6B00]">Future Portfolio</span> <br className="md:block"/>
           ผ่าน <span className="underline decoration-[#FF6B00] decoration-8 underline-offset-8">กิจกรรม</span> ที่ใช่
         </h1>
         <p className="text-indigo-100 text-sm md:text-lg max-w-xl mx-auto mb-10 font-light opacity-80">
           ค้นหาค่าย การแข่งขัน ฝึกงาน และกิจกรรมพัฒนาทักษะ <br/> จากมหาวิทยาลัยทั่วไทย ครบจบในที่เดียว
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <button onClick={() => onNavigate('explore')} className="bg-[#FF6B00] text-white px-8 py-4 rounded-2xl font-black text-lg shadow-xl shadow-orange-900/20 hover:scale-105 transition-all">
+          <button onClick={() => onNavigate('explore')} className="btn-primary">
             เริ่มสำรวจกิจกรรม
           </button>
         </div>
@@ -86,17 +79,17 @@ const HomeView = ({ onNavigate }) => (
     </section>
 
     <section className="max-w-7xl mx-auto px-4 -mt-12 relative z-20 space-y-4">
-      <div className="bg-white p-6 rounded-[40px] shadow-2xl shadow-indigo-100 grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="category-grid">
         {CATEGORIES.map(cat => (
-          <button key={cat.id} onClick={() => onNavigate('explore', { category: cat.id })} className="flex items-center gap-3 p-4 hover:bg-orange-50 rounded-3xl transition-all group border border-transparent hover:border-orange-100">
-            <div className="w-10 h-10 bg-indigo-50 rounded-xl flex items-center justify-center text-[#1A237E] group-hover:bg-[#FF6B00] group-hover:text-white transition-all">
+          <button key={cat.id} onClick={() => onNavigate('explore', { category: cat.id })} className="category-btn group">
+            <div className="category-icon-box">
               {cat.icon}
             </div>
             <span className="text-xs font-black text-gray-700">{cat.name}</span>
           </button>
         ))}
       </div>
-      <div className="bg-white/60 backdrop-blur-sm p-4 rounded-[30px] flex flex-wrap justify-center gap-2 md:gap-8">
+      <div className="region-bar">
         {REGIONS.map(region => (
           <button key={region.id} onClick={() => onNavigate('explore', { region: region.id })} className="flex items-center gap-2 px-4 py-2 hover:text-[#FF6B00] transition-all group">
             <MapPin size={14} className="text-indigo-300 group-hover:text-[#FF6B00]" />
@@ -117,7 +110,7 @@ const HomeView = ({ onNavigate }) => (
         </button>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {CAMPS_DATA.map(camp => (
+        {Workshop_Data.map(camp => (
           <ActivityCard key={camp.id} camp={camp} onClick={() => onNavigate('detail', camp)} />
         ))}
       </div>
@@ -125,7 +118,6 @@ const HomeView = ({ onNavigate }) => (
   </div>
 );
 
-// --- Main App Controller ---
 export default function App() {
   const [view, setView] = useState('home'); 
   const [selectedCamp, setSelectedCamp] = useState(null);
@@ -137,7 +129,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFBFF] font-['Prompt',sans-serif]">
+    <div>
       <Navbar view={view} navigate={navigate} />
 
       <main>
@@ -146,7 +138,7 @@ export default function App() {
         {view === 'explore' && (
           <Explore 
             navigate={navigate} 
-            CAMPS_DATA={CAMPS_DATA} 
+            Workshop_Data={Workshop_Data} 
             CATEGORIES={CATEGORIES} 
             REGIONS={REGIONS} 
             ACTIVITY_TYPES={ACTIVITY_TYPES}
@@ -160,48 +152,44 @@ export default function App() {
         {view === 'criteria' && <UniversityCriteria />}
         {view === 'portfolio' && <Portfolio />}
 
-        {/* หน้าดูรายละเอียดค่าย (Detail View) */}
         {view === 'detail' && selectedCamp && (
           <div className="max-w-4xl mx-auto px-4 py-16 animate-in slide-in-from-bottom-8">
-            <button onClick={() => navigate('explore')} className="mb-8 flex items-center gap-2 font-bold text-gray-400 hover:text-black transition-colors">
+            <button onClick={() => navigate('explore')} className="btn-back">
               <ArrowLeft size={20}/> กลับสู่หน้ารายการ
             </button>
-            <div className="bg-white rounded-[40px] shadow-2xl border border-gray-50 overflow-hidden">
-               <div className="h-[400px] relative">
-                 <img src={selectedCamp.image} className="w-full h-full object-cover" alt={selectedCamp.title} />
-                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent"></div>
-                 <div className="absolute bottom-10 left-10 right-10 text-white">
-                    <div className="flex flex-wrap gap-2 mb-4">
+            <div className="detail-card">
+               <div className="p-10 md:p-16 overflow-hidden">
+                <div className="relative  overflow-hidden rounded-2xl mb-6">
+                 <img src={selectedCamp.image} className=" object-cover" alt={selectedCamp.title} />
+                </div>
+                <div className="flex flex-wrap gap-2 mb-4">
                       <Badge variant="purple">{ACTIVITY_TYPES.find(t => t.id === selectedCamp.type)?.name}</Badge>
                       <Badge variant="indigo">{CATEGORIES.find(c => c.id === selectedCamp.category)?.name}</Badge>
                       <Badge variant="blue">{selectedCamp.subCategory}</Badge>
-                    </div>
-                    <h1 className="text-4xl font-black leading-tight">{selectedCamp.title}</h1>
-                 </div>
-               </div>
-               <div className="p-10 md:p-16">
+                </div>
+                <h1 className="text-3xl font-black leading-tight mb-8">{selectedCamp.title}</h1>
                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
                    <div className="space-y-8">
-                     <div className="bg-blue-50/50 p-6 rounded-[32px] border border-blue-100/50">
+                     <div className="info-box-blue">
                         <h3 className="text-sm font-black text-[#1A237E] mb-4 flex items-center gap-2"><Clock size={16} className="text-[#FF6B00]"/> กำหนดการรับสมัคร</h3>
                         <p className="text-2xl font-black text-[#1A237E]">{selectedCamp.regDate}</p>
                         <p className="text-[10px] text-gray-400 font-bold mt-1 uppercase tracking-wider">ควรสมัครก่อนวันปิดรับสมัครอย่างน้อย 1 วัน</p>
                      </div>
                      <div>
                         <h3 className="text-xl font-black text-[#1A237E] mb-2 flex items-center gap-2">
-                           <School size={20} className="text-[#FF6B00]"/> ข้อมูลสถาบัน
+                            <School size={20} className="text-[#FF6B00]"/> ข้อมูลค่าย
                         </h3>
                         <p className="text-gray-600 leading-relaxed text-sm">
                           <strong>{selectedCamp.university}</strong><br/>
                           สายการเรียน: {CATEGORIES.find(c => c.id === selectedCamp.category)?.name} ({selectedCamp.subCategory})<br/>
                           ภูมิภาค: {REGIONS.find(r => r.id === selectedCamp.region)?.name}<br/>
-                          สถานที่จัด: {selectedCamp.location}
+                          สถานที่จัด: <a href= {selectedCamp.GoogleMapLink} target="_blank" className='inline-block transition-all text-blue-600 hover:text-blue-800 hover:scale-105 hover:translate-x-1 cursor-pointer'>{selectedCamp.location}</a>
                         </p>
                      </div>
                    </div>
-                   <div className="bg-orange-50/50 p-8 rounded-[32px] space-y-6 h-fit border border-orange-100/50">
+                   <div className="info-box-orange">
                      <div>
-                        <p className="text-[10px] text-orange-400 font-black uppercase mb-1 tracking-widest">วันจัดกิจกรรม</p>
+                        <p className="text-[10px] text-orange-4000 font-black uppercase mb-1 tracking-widest">วันจัดกิจกรรม</p>
                         <div className="flex items-center gap-4 text-xl font-black text-gray-700"><Calendar className="text-[#FF6B00]"/> {selectedCamp.date}</div>
                      </div>
                      <div className="pt-6 border-t border-orange-100">
@@ -209,16 +197,29 @@ export default function App() {
                         <div className="flex flex-wrap gap-2">
                            <Badge variant="indigo">Portfolio</Badge>
                            <Badge variant="indigo">ค้นหาตัวตน</Badge>
-                           <Badge variant="indigo">Certificate</Badge>
+                           <Badge variant="indigo">เวิร์กชอปพัฒนาตนเอง</Badge>
                         </div>
                      </div>
                      <div className="pt-4 text-center">
-                        <span className="text-xs font-bold text-gray-400 uppercase">ค่าธรรมเนียม</span>
+                        <span className="text-xs font-bold text-gray-400 uppercase">ค่าใช้จ่าย</span>
                         <div className="text-3xl font-black text-[#1A237E]">{selectedCamp.price}</div>
                      </div>
                    </div>
+                   {/*Contact Link , Register Link*/}
+
                  </div>
-                 <button className="w-full bg-[#1A237E] text-white py-5 rounded-2xl font-black text-xl hover:bg-[#FF6B00] transition-all shadow-xl shadow-indigo-100">สมัครเข้าร่วมกิจกรรม</button>
+                 <div className='mb-10'>
+                  <div>
+                    <h3 className="text-xl font-black text-[#1A237E] mb-2 flex items-center gap-2">
+                      <MessageCircle size={20} className="text-[#FF6B00]"/> Contact
+                    </h3>
+                    <p>
+                      สอบถามเพิ่มเติม : <a href={selectedCamp.Contactlink} target="_blank" className='inline-block transition-all text-blue-600 hover:text-blue-800 hover:scale-105 hover:translate-x-1 cursor-pointer'>{selectedCamp.Contactlink}</a><br />
+                      <p className='font-bold text-gray-700 mt-1'>หมายเหตุ  : สมัครได้แล้ววันนี้ รับจำนวนจำกัด!</p>
+                    </p>
+                  </div>
+                 </div>
+                 <button className="btn-register " onClick={() => window.open(selectedCamp.Registerlink)} >สมัครเข้าร่วมกิจกรรม</button>
                </div>
             </div>
           </div>
@@ -226,18 +227,6 @@ export default function App() {
       </main>
 
       <Footer />
-
-      <style dangerouslySetInnerHTML={{ __html: `
-        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800;900&display=swap');
-        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #f1f1f1; border-radius: 10px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #FF6B00; }
-        
-        @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slide-in-bottom { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .animate-in { animation: fade-in 0.5s ease-out; }
-        .slide-in-from-bottom-8 { animation: slide-in-bottom 0.6s ease-out; }
-      `}} />
     </div>
   );
 }

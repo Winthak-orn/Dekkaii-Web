@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Search, Map, Sparkles, Layers, Target } from 'lucide-react';
 
-export default function Explore({ navigate, CAMPS_DATA, CATEGORIES, REGIONS, ACTIVITY_TYPES, ActivityCard }) {
+export default function Explore({ navigate, Workshop_Data, CATEGORIES, REGIONS, ACTIVITY_TYPES, ActivityCard }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeSubCategory, setActiveSubCategory] = useState(null);
   const [activeRegion, setActiveRegion] = useState(null);
   const [activeType, setActiveType] = useState(null);
 
-  const filteredData = CAMPS_DATA.filter(camp => {
+  const filteredData = Workshop_Data.filter(camp => {
     const matchesSearch = camp.title.toLowerCase().includes(searchQuery.toLowerCase()) || camp.university.toLowerCase().includes(searchQuery.toLowerCase());
     if (!matchesSearch) return false;
     if (activeCategory && camp.category !== activeCategory) return false;
