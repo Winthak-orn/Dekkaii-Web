@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import './app.css'; // นำเข้าไฟล์ CSS
+import './App.css'; // นำเข้าไฟล์ CSS
 
 import Navbar from './components/Navbar';
 import Explore from './components/Explore';
