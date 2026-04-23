@@ -10,6 +10,7 @@ import TutorCourse from './components/TutorCourse';
 import UniversityCriteria from './components/UniversityCriteria';
 import Footer from './MyFooter'; 
 import Portfolio from './components/Portfolio';
+import Detail from './components/DetailCard';
 import { 
   Calendar, MapPin, Clock, ChevronRight, Zap, 
   ArrowLeft, School , MessageCircle ,BriefcaseBusiness
@@ -121,6 +122,7 @@ const HomeView = ({ onNavigate }) => (
 export default function App() {
   const [view, setView] = useState('home'); 
   const [selectedCamp, setSelectedCamp] = useState(null);
+  const [isDetailOpen, setIsDetailOpen ] = useState(false);
 
   const navigate = (to, data = null) => {
     setView(to);
@@ -166,7 +168,8 @@ export default function App() {
                       <Badge variant="indigo">{CATEGORIES.find(c => c.id === selectedCamp.category)?.name}</Badge>
                       <Badge variant="blue">{selectedCamp.subCategory}</Badge>
                 </div>
-                <h1 className="text-3xl font-black leading-tight mb-8">{selectedCamp.title}</h1>
+                <h1 className="text-3xl font-black leading-tight mb-2">{selectedCamp.title}</h1>
+                <p className='mb-10' >{selectedCamp.Description}</p>
                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
                    <div className="space-y-8">
                      <div className="info-box-blue">
@@ -182,7 +185,8 @@ export default function App() {
                           <strong>{selectedCamp.university}</strong><br/>
                           สายการเรียน: {CATEGORIES.find(c => c.id === selectedCamp.category)?.name} ({selectedCamp.subCategory})<br/>
                           ภูมิภาค: {REGIONS.find(r => r.id === selectedCamp.region)?.name}<br/>
-                          สถานที่จัด: <a href= {selectedCamp.GoogleMapLink} target="_blank" className='inline-block transition-all text-blue-600 hover:text-blue-800 hover:scale-105 hover:translate-x-1 cursor-pointer'>{selectedCamp.location}</a>
+                          สถานที่จัด: <a href= {selectedCamp.GoogleMapLink} target="_blank" className='inline-block transition-all text-blue-600 hover:text-blue-800 hover:scale-105 hover:translate-x-1 cursor-pointer'>{selectedCamp.location}</a><br />
+                          อายุ: รับสมัครน้อง ๆ ระดับมัธยมศึกษา อายุ 13- 19 ปี
                         </p>
                      </div>
                    </div>
@@ -205,10 +209,7 @@ export default function App() {
                      </div>
                    </div>
                    {/*Contact Link , Register Link*/}
-
-                 </div>
-                 <div className='mb-10'>
-                  <div>
+                   <div>
                     <h3 className="text-xl font-black text-[#1A237E] mb-2 flex items-center gap-2">
                       <MessageCircle size={20} className="text-[#FF6B00]"/> Contact
                     </h3>
@@ -218,7 +219,24 @@ export default function App() {
                     </p>
                   </div>
                  </div>
-                 <button className="btn-register " onClick={() => window.open(selectedCamp.Registerlink)} >สมัครเข้าร่วมกิจกรรม</button>
+                 <button className="btn-register mb-6" onClick={() => window.open(selectedCamp.Registerlink)} >สมัครเข้าร่วมกิจกรรม</button><br />
+                 <div className='Activity_Detail'>
+                  <button className='btn_detail' onClick={() => setIsDetailOpen(true)}>รายละเอียดเพิ่มเติม</button>
+                  <Detail isOpen={isDetailOpen} onClose={()=>setIsDetailOpen(false)}>
+                    {/* --- ส่วนนี้คือการดึงข้อมูลจาก mockData (ผ่าน selectedCamp) --- */}
+                    <div className="p-4">
+                      <h2 className="text-xl font-bold mb-4">รายละเอียดกิจกรรม</h2>
+                      <ul className="space-y-2">
+                        {selectedCamp?.Detail?.map((item, index) => (
+                          <li key={index} className="flex gap-2 text-gray-700">
+                            <span className="text-orange-500"></span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    </Detail>
+                 </div>
                </div>
             </div>
           </div>

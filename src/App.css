@@ -42,7 +42,12 @@ body {
 .btn-back {
   @apply mb-8 flex items-center gap-2 font-bold text-gray-400 hover:text-black transition-colors;
 }
-
+.Activity_Detail {
+  @apply flex justify-center items-center;
+}
+.btn_detail {
+  @apply hover:underline hover:text-blue-600;
+}
 /* Activity Card */
 .activity-card {
   @apply bg-white rounded-3xl border border-gray-100 hover:shadow-2xl hover:shadow-indigo-100 transition-all cursor-pointer flex flex-col h-full overflow-hidden;
