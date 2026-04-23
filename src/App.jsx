@@ -169,13 +169,20 @@ export default function App() {
                       <Badge variant="blue">{selectedCamp.subCategory}</Badge>
                 </div>
                 <h1 className="text-3xl font-black leading-tight mb-2">{selectedCamp.title}</h1>
-                <p className='mb-10' >{selectedCamp.Description}</p>
+                <p className='mb-10' >{selectedCamp.Description}</p><br />
+                <div className="note-container">
+                  {selectedCamp?.noteOther?.map((note, index) => (
+                    <p key={index} className="note-item font-bold mb-4">
+                      {note}
+                    </p>
+                  ))}
+                </div>
                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
                    <div className="space-y-8">
                      <div className="info-box-blue">
                         <h3 className="text-sm font-black text-[#1A237E] mb-4 flex items-center gap-2"><Clock size={16} className="text-[#FF6B00]"/> กำหนดการรับสมัคร</h3>
                         <p className="text-2xl font-black text-[#1A237E]">{selectedCamp.regDate}</p>
-                        <p className="text-[10px] text-gray-400 font-bold mt-1 uppercase tracking-wider">ควรสมัครก่อนวันปิดรับสมัครอย่างน้อย 1 วัน</p>
+                        <p className="text-[8px] text-gray-400 font-bold mt-1 uppercase tracking-wider">ควรสมัครก่อนวันปิดรับสมัครอย่างน้อย 1 วัน</p>
                      </div>
                      <div>
                         <h3 className="text-xl font-black text-[#1A237E] mb-2 flex items-center gap-2">
@@ -186,7 +193,7 @@ export default function App() {
                           สายการเรียน: {CATEGORIES.find(c => c.id === selectedCamp.category)?.name} ({selectedCamp.subCategory})<br/>
                           ภูมิภาค: {REGIONS.find(r => r.id === selectedCamp.region)?.name}<br/>
                           สถานที่จัด: <a href= {selectedCamp.GoogleMapLink} target="_blank" className='inline-block transition-all text-blue-600 hover:text-blue-800 hover:scale-105 hover:translate-x-1 cursor-pointer'>{selectedCamp.location}</a><br />
-                          อายุ: รับสมัครน้อง ๆ ระดับมัธยมศึกษา อายุ 13- 19 ปี
+                          อายุ: {selectedCamp.Age}
                         </p>
                      </div>
                    </div>
@@ -194,6 +201,7 @@ export default function App() {
                      <div>
                         <p className="text-[10px] text-orange-4000 font-black uppercase mb-1 tracking-widest">วันจัดกิจกรรม</p>
                         <div className="flex items-center gap-4 text-xl font-black text-gray-700"><Calendar className="text-[#FF6B00]"/> {selectedCamp.date}</div>
+                        <p className="flex items-center content-wrapper gap-4 text-xl font-black text-gray-700" style={{ marginLeft: '40px' }}>เวลา : {selectedCamp.time}</p>
                      </div>
                      <div className="pt-6 border-t border-orange-100">
                         <p className="text-[10px] text-orange-400 font-bold uppercase mb-2">จุดเด่นกิจกรรม</p>
@@ -215,7 +223,8 @@ export default function App() {
                     </h3>
                     <p>
                       สอบถามเพิ่มเติม : <a href={selectedCamp.Contactlink} target="_blank" className='inline-block transition-all text-blue-600 hover:text-blue-800 hover:scale-105 hover:translate-x-1 cursor-pointer'>{selectedCamp.Contactlink}</a><br />
-                      <p className='font-bold text-gray-700 mt-1'>หมายเหตุ  : สมัครได้แล้ววันนี้ รับจำนวนจำกัด!</p>
+                      <p className='font-bold text-gray-700 mt-1'>หมายเหตุ  : {selectedCamp.note}</p>
+                      <p className='font-bold text-gray-700 mt-1'>{selectedCamp.note2}</p>
                     </p>
                   </div>
                  </div>
