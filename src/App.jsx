@@ -122,7 +122,7 @@ const HomeView = ({ onNavigate }) => (
 export default function App() {
   const [view, setView] = useState('home'); 
   const [selectedCamp, setSelectedCamp] = useState(null);
-  const [isDetailOpen, setIsDetailOpen ] = useState(false);
+  const [isDetailOpen, setIsDetailOpen] = useState(false);
 
   const navigate = (to, data = null) => {
     setView(to);

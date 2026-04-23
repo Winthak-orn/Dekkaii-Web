@@ -1,27 +1,28 @@
-/* กล่องเนื้อหาหลัก */
+/* แก้ไขตัวคุมป๊อปอัพ */
 .detail-content {
-  background: white;
-  padding: 20px;
-  border-radius: 16px;
-  position: relative;
-  
-  /* แก้บัคตัวอักษรเต็มหน้า/ล้นหน้าจอ */
-  width: 90%;            /* ให้กว้าง 90% ของจอมือถือ */
-  max-width: 500px;      /* แต่ถ้าจอใหญ่ ไม่เกิน 500px */
-  max-height: 85vh;      /* สูงไม่เกิน 85% ของความสูงหน้าจอ */
-  overflow-y: auto;      /* สำคัญมาก! ถ้าเนื้อหาเยอะ ให้เลื่อนลงไปอ่านได้ ไม่ให้ทะลุออกมา */
-  
-  margin: auto;
+    background: white;
+    width: 92%;           /* ให้กว้างเกือบเต็มจอมือถือ */
+    max-width: 550px;
+    max-height: 80vh;     /* สูงได้แค่ 80% ของจอ ถ้าเกินให้ไถอ่านเอา */
+    overflow-y: auto;     /* เปิดระบบไถ (Scroll) */
+    padding: 25px;
+    border-radius: 20px;
+    position: relative;
+    margin: 0 auto;
 }
 
-/* ปุ่มปิด (เพื่อให้กดง่ายในมือถือ) */
+/* ทำให้ปุ่มปิดลอยอยู่กับที่ กดง่าย */
 .detail-close {
-  position: sticky;      /* เปลี่ยนจาก absolute เป็น sticky เพื่อให้มันลอยอยู่ข้างบนตลอด */
-  top: 0;
-  right: 0;
-  float: right;          /* ดันไปทางขวา */
-  font-size: 32px;       /* ใหญ่ขึ้นหน่อยให้กดนิ้วโดนง่าย */
-  padding: 10px;
-  cursor: pointer;
-  z-index: 100;          /* ให้อยู่เหนือตัวอักษร */
+    position: sticky;
+    top: -10px;
+    right: -10px;
+    float: right;
+    background: #f0f0f0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 24px;
+    z-index: 999;
+    border: none;
+    cursor: pointer;
 }
