@@ -1,30 +1,27 @@
-.detail-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
+/* กล่องเนื้อหาหลัก */
 .detail-content {
   background: white;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 16px;
   position: relative;
-  min-width: 300px;
+  
+  /* แก้บัคตัวอักษรเต็มหน้า/ล้นหน้าจอ */
+  width: 90%;            /* ให้กว้าง 90% ของจอมือถือ */
+  max-width: 500px;      /* แต่ถ้าจอใหญ่ ไม่เกิน 500px */
+  max-height: 85vh;      /* สูงไม่เกิน 85% ของความสูงหน้าจอ */
+  overflow-y: auto;      /* สำคัญมาก! ถ้าเนื้อหาเยอะ ให้เลื่อนลงไปอ่านได้ ไม่ให้ทะลุออกมา */
+  
+  margin: auto;
 }
 
+/* ปุ่มปิด (เพื่อให้กดง่ายในมือถือ) */
 .detail-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 20px;
+  position: sticky;      /* เปลี่ยนจาก absolute เป็น sticky เพื่อให้มันลอยอยู่ข้างบนตลอด */
+  top: 0;
+  right: 0;
+  float: right;          /* ดันไปทางขวา */
+  font-size: 32px;       /* ใหญ่ขึ้นหน่อยให้กดนิ้วโดนง่าย */
+  padding: 10px;
   cursor: pointer;
+  z-index: 100;          /* ให้อยู่เหนือตัวอักษร */
 }
