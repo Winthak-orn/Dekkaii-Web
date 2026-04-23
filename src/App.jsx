@@ -221,20 +221,41 @@ export default function App() {
                  </div>
                  <button className="btn-register mb-6" onClick={() => window.open(selectedCamp.Registerlink)} >สมัครเข้าร่วมกิจกรรม</button><br />
                  <div className='Activity_Detail'>
-                  <button className='btn_detail' onClick={() => setIsDetailOpen(true)}>รายละเอียดเพิ่มเติม</button>
+                    {!isDetailOpen && (
+                      <button 
+                        className='btn_detail' 
+                        onClick={() => setIsDetailOpen(true)}
+                      >
+                        รายละเอียดเพิ่มเติม
+                      </button>
+                    )}
                   <Detail isOpen={isDetailOpen} onClose={()=>setIsDetailOpen(false)}>
                     {/* --- ส่วนนี้คือการดึงข้อมูลจาก mockData (ผ่าน selectedCamp) --- */}
                     <div className="p-4">
                       <h2 className="text-xl font-bold mb-4">รายละเอียดกิจกรรม</h2>
                       <ul className="space-y-2">
-                        {selectedCamp?.Detail?.map((item, index) => (
-                          <li key={index} className="flex gap-2 text-gray-700">
-                            <span className="text-orange-500"></span>
-                            <span>{item}</span>
-                          </li>
-                        ))}
+                        {selectedCamp?.Detail?.map((item, index) => {
+                          // เช็คว่าบรรทัดไหนเป็น "หัวข้อ" (เช่น มีคำว่า ⭐️ หรือ เป็นตัวหนา)
+                          const isHeader = item.includes('⭐️') || item.includes('สิ่งที่น้อง ๆ จะได้รับ');
+                          
+                          return (
+                            <div key={index} className={`flex gap-3 ${isHeader ? 'mt-6 mb-2' : ''}`}>
+                              {!isHeader && <span className="text-[#FF6B00] mt-1">●</span>}
+                              <p className={`${isHeader ? 'text-lg font-bold text-[#1A237E]' : 'text-sm text-gray-600 leading-relaxed'}`}>
+                                {item}
+                              </p>
+                            </div>
+                          );
+                        })}
                       </ul>
+                      <button 
+                        onClick={() => setIsDetailOpen(false)}
+                        className="w-full mt-8 py-3 bg-gray-100 text-gray-500 rounded-xl font-bold hover:bg-gray-200 transition-all"
+                      >
+                        ปิดหน้าต่าง
+                      </button>
                     </div>
+                    
                     </Detail>
                  </div>
                </div>
