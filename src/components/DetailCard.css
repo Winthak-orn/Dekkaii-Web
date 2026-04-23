@@ -1,28 +1,140 @@
-/* แก้ไขตัวคุมป๊อปอัพ */
-.detail-content {
-    background: white;
-    width: 92%;           /* ให้กว้างเกือบเต็มจอมือถือ */
-    max-width: 550px;
-    max-height: 80vh;     /* สูงได้แค่ 80% ของจอ ถ้าเกินให้ไถอ่านเอา */
-    overflow-y: auto;     /* เปิดระบบไถ (Scroll) */
-    padding: 25px;
-    border-radius: 20px;
-    position: relative;
-    margin: 0 auto;
+/* พื้นหลังมืดและเบลอ */
+.detail-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px); /* พื้นหลังเบลอแบบโมเดิร์น */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px; /* เว้นขอบกันติดจอในมือถือ */
 }
 
-/* ทำให้ปุ่มปิดลอยอยู่กับที่ กดง่าย */
-.detail-close {
-    position: sticky;
-    top: -10px;
-    right: -10px;
-    float: right;
-    background: #f0f0f0;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 24px;
-    z-index: 999;
+/* กล่องสีขาว Popup */
+.detail-content {
+    background: white;
+    width: 95%;           /* เหมาะกับมือถือ */
+    max-width: 550px;     /* เหมาะกับคอม */
+    
+    /* 1. บังคับความสูงคงที่เพื่อให้เกิดการ Scroll */
+    height: 85vh;         /* สูง 85% ของหน้าจอเสมอ */
+    
+    /* 2. ใช้ Flex เพื่อแบ่งหัว-กลาง-ท้าย */
+    display: flex;
+    flex-direction: column; 
+    
+    border-radius: 24px;
+    overflow: hidden; 
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes popupFade {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* ส่วนหัว */
+.modal-header {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header {
+    flex-shrink: 0;      /* ห้ามส่วนหัวหดตัว */
+    padding: 20px 24px;
+    border-bottom: 1px solid #eee;
+}
+
+.close-x {
+    background: none;
     border: none;
+    font-size: 28px;
+    color: #999;
     cursor: pointer;
+}
+
+/* ส่วนเนื้อหาที่เลื่อนได้ */
+.modal-body {
+    padding: 24px;
+    
+    /* 3. สั่งให้ส่วนนี้รับหน้าที่เลื่อนแทนคนอื่น */
+    overflow-y: auto !important; 
+    flex-grow: 1;        /* กินพื้นที่ที่เหลือทั้งหมด */
+    
+    /* เพิ่มความลื่นไหลในมือถือ */
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+
+.modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+.modal-body::-webkit-scrollbar-thumb {
+    background: #e0e0e0;
+    border-radius: 10px;
+}
+
+/* การตกแต่งรายการ (List) */
+.detail-card {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding: 12px 16px;
+    background: #f8faff;
+    border-radius: 12px;
+    border: 1px solid #edf2f7;
+}
+
+/* ป้องกัน Header และ Footer ขยับตามเวลาเลื่อน */
+
+.detail-card.highlight {
+    background: #fff5eb;
+    border-color: #ffe0c2;
+}
+
+.detail-card p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #4a5568;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: #ff6b00;
+    border-radius: 50%;
+    margin-top: 8px;
+    flex-shrink: 0;
+}
+
+/* ส่วนท้าย */
+.modal-footer {
+    flex-shrink: 0;      /* ห้ามส่วนท้ายหดตัว */
+    padding: 16px 24px;
+    border-top: 1px solid #eee;
+}
+
+.btn-confirm {
+    width: 100%;
+    padding: 12px;
+    background: #1a237e;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-confirm:hover {
+    background: #ff6b00;
 }

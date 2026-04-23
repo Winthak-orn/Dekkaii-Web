@@ -7,10 +7,7 @@ const DetailCard = ({ isOpen , onClose, children}) => {
     return (
         <div className='detail-overlay ' onClick={onClose}>
             <div className='detail-content' onClick={(e) => e.stopPropagation()}>
-                <button className='detail-close' onClick={onClose}>&times;</button>
-                <div className="detail-body">
-                    {children}
-                </div>
+                {children}
             </div>
         </div>
     );

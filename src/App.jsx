@@ -221,43 +221,45 @@ export default function App() {
                  </div>
                  <button className="btn-register mb-6" onClick={() => window.open(selectedCamp.Registerlink)} >สมัครเข้าร่วมกิจกรรม</button><br />
                  <div className='Activity_Detail'>
-                    {!isDetailOpen && (
-                      <button 
-                        className='btn_detail' 
-                        onClick={() => setIsDetailOpen(true)}
-                      >
-                        รายละเอียดเพิ่มเติม
-                      </button>
-                    )}
-                  <Detail isOpen={isDetailOpen} onClose={()=>setIsDetailOpen(false)}>
-                    {/* --- ส่วนนี้คือการดึงข้อมูลจาก mockData (ผ่าน selectedCamp) --- */}
-                    <div className="p-4">
-                      <h2 className="text-xl font-bold mb-4">รายละเอียดกิจกรรม</h2>
-                      <ul className="space-y-2">
-                        {selectedCamp?.Detail?.map((item, index) => {
-                          // เช็คว่าบรรทัดไหนเป็น "หัวข้อ" (เช่น มีคำว่า ⭐️ หรือ เป็นตัวหนา)
-                          const isHeader = item.includes('⭐️') || item.includes('สิ่งที่น้อง ๆ จะได้รับ');
+                      {/* ถ้า Popup ปิดอยู่ ให้โชว์ปุ่ม */}
+                      {!isDetailOpen && (
+                        <button className='btn_detail' onClick={() => setIsDetailOpen(true)}>
+                          รายละเอียดเพิ่มเติม
+                        </button>
+                      )}
+
+                      {/* ส่วนของ Popup */}
+                      <Detail isOpen={isDetailOpen} onClose={() => setIsDetailOpen(false)}>
+                        {/* ตัวคลุมที่ส่งผ่าน props children ไปยัง .detail-content */}
+                        <div className="modal-wrapper" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                           
-                          return (
-                            <div key={index} className={`flex gap-3 ${isHeader ? 'mt-6 mb-2' : ''}`}>
-                              {!isHeader && <span className="text-[#FF6B00] mt-1">●</span>}
-                              <p className={`${isHeader ? 'text-lg font-bold text-[#1A237E]' : 'text-sm text-gray-600 leading-relaxed'}`}>
-                                {item}
-                              </p>
-                            </div>
-                          );
-                        })}
-                      </ul>
-                      <button 
-                        onClick={() => setIsDetailOpen(false)}
-                        className="w-full mt-8 py-3 bg-gray-100 text-gray-500 rounded-xl font-bold hover:bg-gray-200 transition-all"
-                      >
-                        ปิดหน้าต่าง
-                      </button>
+                          <div className="modal-header">
+                            <h2 style={{ margin: 0 }}>รายละเอียดกิจกรรม</h2>
+                          </div>
+
+                          {/* รายการ Card ทั้งหมดต้องอยู่ใน modal-body นี้เท่านั้น */}
+                          <div className="modal-body">
+                            {selectedCamp?.Detail?.map((item, index) => {
+                              const isStar = item.includes('⭐️');
+                              return (
+                                <div key={index} className={`detail-card ${isStar ? 'highlight' : ''}`}>
+                                  {!isStar && <span className="dot" />}
+                                  <p>{item}</p>
+                                </div>
+                              );
+                            })}
+                          </div>
+
+                          <div className="modal-footer">
+                            <button className="btn-confirm" onClick={() => setIsDetailOpen(false)}>
+                              ปิดหน้าต่าง
+                            </button>
+                          </div>
+
+                        </div>
+                      </Detail>
                     </div>
-                    
-                    </Detail>
-                 </div>
+
                </div>
             </div>
           </div>
