@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './App.css'; // นำเข้าไฟล์ CSS
 
@@ -11,6 +11,7 @@ import UniversityCriteria from './components/UniversityCriteria';
 import Footer from './MyFooter'; 
 import Portfolio from './components/Portfolio';
 import Detail from './components/DetailCard';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { 
   Calendar, MapPin, Clock, ChevronRight, Zap, 
   ArrowLeft, School , MessageCircle ,BriefcaseBusiness
@@ -127,9 +128,31 @@ export default function App() {
   const navigate = (to, data = null) => {
     setView(to);
     if (to === 'detail') setSelectedCamp(data);
+    // บันทึกสถานะหน้าปัจจุบันลงใน History ของ Browser
+    window.history.pushState({ view: to, data: data }, "", "");
     window.scrollTo(0, 0);
   };
 
+  useEffect(() => {
+    if (!window.history.state) {
+    window.history.replaceState({ view: 'home', data: null }, "", "");
+  }
+    const handlePopState = (event) => {
+    // เมื่อกดย้อนกลับ event.state จะมีข้อมูลที่เราเคย pushState ไว้
+    if (event.state) {
+      setView(event.state.view);
+      setSelectedCamp(event.state.data);
+    } else {
+      // ถ้าถอยไปจนสุด (ไม่มีประวัติแล้ว) ให้กลับหน้า Home
+      setView('home');
+      setSelectedCamp(null);
+    }
+  };
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
   return (
     <div>
       <Navbar view={view} navigate={navigate} />
@@ -277,5 +300,6 @@ export default function App() {
 
       <Footer />
     </div>
-  );
+   ); 
+  
 }
