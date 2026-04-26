@@ -42,7 +42,7 @@ const UniversityCriteria = () => {
       details: { rounds: "TCAS 1-3 (รอบ 1 รับจำนวนมาก)", criteria: "GPAX 3.00+ (คณะวิศวะ), GPAX 2.50+ (คณะอื่นๆ), TGAT/TPAT", documents: "ปพ.1, บัตรประชาชน, Portfolio", note: "เปิดรับรอบ 1 Portfolio หลายโครงการมาก" } 
     },
     { id: 6, name: "มหาวิทยาลัยเชียงใหม่", abbr: "CMU", link: "https://www.reg.cmu.ac.th/", details: { rounds: "TCAS 1-3", criteria: "GPAX ตามคณะ, TGAT/TPAT", documents: "ปพ.1, Portfolio", note: "มีโควตาภาคเหนือ" } },
-    { id: 7, name: "ม.เทคโนโลยีพระจอมเกล้าธนบุรี", abbr: "KMUTT", link: "https://admission.kmutt.ac.th/", details: { rounds: "TCAS 1-4", criteria: "GPAX 2.50+", documents: "ปพ.1, Portfolio", note: "โครงการ Multi Active" } },
+    { id: 7, name: "มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี", abbr: "KMUTT", link: "https://admission.kmutt.ac.th/", details: { rounds: "TCAS 1-4", criteria: "GPAX 2.50+", documents: "ปพ.1, Portfolio", note: "โครงการ Multi Active" } },
     { id: 8, name: "มหาวิทยาลัยขอนแก่น", abbr: "KKU", link: "https://admissions.kku.ac.th/", details: { rounds: "TCAS 1-2", criteria: "GPAX ตามคณะ", documents: "ปพ.1, Portfolio", note: "มีโควตาภาคอีสาน" } }
   ];
 
