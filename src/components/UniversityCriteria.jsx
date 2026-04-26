@@ -36,7 +36,7 @@ const UniversityCriteria = () => {
     },
     { 
       id: 5, 
-      name: "ม.พระจอมเกล้าฯ ลาดกระบัง", 
+      name: "สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง", 
       abbr: "KMITL", 
       link: "https://reg.kmitl.ac.th/TCAS/", 
       details: { rounds: "TCAS 1-3 (รอบ 1 รับจำนวนมาก)", criteria: "GPAX 3.00+ (คณะวิศวะ), GPAX 2.50+ (คณะอื่นๆ), TGAT/TPAT", documents: "ปพ.1, บัตรประชาชน, Portfolio", note: "เปิดรับรอบ 1 Portfolio หลายโครงการมาก" } 
