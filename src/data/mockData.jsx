@@ -62,8 +62,8 @@ export const Workshop_Data = [
   { 
     id: 1, title: "Cosmetic Sci Lab : Fragrance & Lip (ห้องเรียนจำลองวิทย์เครื่องสำอาง : กลิ่น และลิป)", 
     type: 'camp',
-    regDate: "------", 
-    date: "วันที่ 24 พฤษภาคม 2569", 
+    regDate: "หมดเวลาจัดกิจกรรมแล้ว", 
+    date: "หมดเวลาจัดกิจกรรมแล้ว", 
     location: "KX Knowledge Exchange", 
     region: 'central', 
     university: 'OnceThailand', 
@@ -101,8 +101,8 @@ export const Workshop_Data = [
   { 
     id: 2, title: " : Diplomat สานฝันนักการทูต ซีซั่น 26", 
     type: 'camp',
-    regDate: "------", 
-    date: "วันที่ 14 มิถุนายน 2569", 
+    regDate: "หมดเวลาจัดกิจกรรมแล้ว", 
+    date: "หมดเวลาจัดกิจกรรมแล้ว", 
     location: "True Space อโศก ตรงข้ามมศว", 
     region: 'central', 
     university: 'OnceThailand', 
@@ -135,8 +135,8 @@ export const Workshop_Data = [
   { 
     id: 3, title: "ห้องเรียนจำลองนิติวิทยาศาสตร์ รุ่นที่ 5", 
     type: 'camp',
-    regDate: "------", 
-    date: "28 มิถุนายน 2569", 
+    regDate: "หมดเวลาจัดกิจกรรมแล้ว", 
+    date: "หมดเวลาจัดกิจกรรมแล้ว", 
     location: "Knowledge Exchange (KX)", 
     region: 'central', 
     university: 'OnceThailand', 
@@ -176,8 +176,8 @@ export const Workshop_Data = [
   { 
     id: 4, title: "ค่าย BBA (Business Administration International Program) บริหารธุรกิจ(ค่ายบัญชี - บริหารธุรกิจ ภาคอินเตอร์) รุ่น 4", 
     type: 'camp',
-    regDate: "------", 
-    date: "วันที่ 27 มิถุนายน 2569", 
+    regDate: "หมดเวลาจัดกิจกรรมแล้ว", 
+    date: "หมดเวลาจัดกิจกรรมแล้ว", 
     location: "KX Knowledge Exchange", 
     region: 'central', 
     university: 'OnceThailand', 
